@@ -1,9 +1,9 @@
-import react from 'react';
 
+import React from 'react';
 
 const Input = ({ name, label, error, ...rest }) => {
     return (
-        <div className="form-group">
+        <div className="form-group Login">
             <label htmlFor={name} >{label}</label>
             <input
                 {...rest}
