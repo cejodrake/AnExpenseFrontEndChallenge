@@ -55,6 +55,13 @@ class Form extends Component {
                 error={errors[name]}
             />
         );
+
+    };
+    renderButton(label) {
+        return (
+            <button className="btn btn-primary" disabled={this.validate()}>{label}</button>
+        )
     }
 
 }
+export default Form;
