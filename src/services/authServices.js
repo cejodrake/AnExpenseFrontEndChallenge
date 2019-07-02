@@ -14,13 +14,10 @@ function logout() {
     localStorage.removeItem(tokenKey);
 }
 
-export function getCurrentUser() {
-    return null;
-}
 
 export default {
     login,
     logout,
-    getCurrentUser
+
 
 }
