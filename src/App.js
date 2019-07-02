@@ -6,7 +6,7 @@ import LoginForm from './components/loginForm';
 import NavBar from './components/common/navBar';
 
 import './App.css';
-import 'react-toastify/dist/ReactTostify.css';
+import 'react-toastify/dist/ReactToastify.css'
 import NotFound from './components/notfound';
 
 
@@ -14,7 +14,7 @@ import NotFound from './components/notfound';
 class App extends Component {
 
     state = {
-        user =""
+        user: ""
     }
     render() {
         return (
