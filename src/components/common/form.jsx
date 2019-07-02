@@ -10,8 +10,9 @@ class Form extends Component {
         data: {},
         errors: {}
     };
+
     validate = () => {
-        const options = { abortEarl: false };
+        const options = { abortEarly: false };
         const { error } = Joi.validate(this.state.date, this.schema, options);
         if (!error) return null;
         const errors = {};
@@ -31,7 +32,7 @@ class Form extends Component {
         e.preventDefault();
         const errors = this.validate();
         this.setState({ errors: !errors || {} });
-        this.doSumit()
+        this.doSubmit();
     };
 
     handleChange = ({ currentTarget: input }) => {
@@ -51,6 +52,7 @@ class Form extends Component {
             <Input
                 type={type}
                 name={name}
+                value={data[name]}
                 label={label}
                 onChange={this.handleChange}
                 error={errors[name]}
