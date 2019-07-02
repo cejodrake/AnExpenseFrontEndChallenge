@@ -2,11 +2,13 @@ import React from 'react';
 import Joi from 'joi-browser';
 import Form from './common/form';
 
+import auth from '../services/authServices';
+
 
 class LoginForm extends Form {
 
     state = {
-        date: { username: "", password: "" },
+        data: { username: "", password: "" },
         errors: {}
     };
 
@@ -17,7 +19,7 @@ class LoginForm extends Form {
     doSubmit = async () => {
         try {
             const { data } = this.state;
-            // await auth.login(data.username, data.password) // I should create this service 
+            await auth.login(data.username, data.password) // I should create this service 
             const { state } = this.props.location;
             window.location = state ? state.from.pathname : '/';
         } catch (ex) {
@@ -36,6 +38,7 @@ class LoginForm extends Form {
                 <form onSubmit={this.handleSubmit}>
                     {this.renderInput('username', 'Username')}
                     {this.renderInput('password', 'Password', 'password')}
+                    {this.renderButton('Login')}
                 </form>
 
             </div>
