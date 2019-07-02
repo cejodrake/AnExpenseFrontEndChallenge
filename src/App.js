@@ -10,7 +10,7 @@ class App extends Component {
     render() {
         return (
             <main className="container">
-                <h1> Hello test app </h1>
+
 
             </main>
 
