@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+
+import NewExpenseForm from "./components/newExpenseForm";
 import LoginForm from './components/loginForm';
 import NavBar from './components/common/navBar';
 
@@ -26,6 +28,7 @@ class App extends Component {
                 <main className="container">
                     <Switch>
                         <Route path="/login" component={LoginForm} />
+                        <Route path="/newexpense" component={NewExpenseForm} />
                         <Route path="/not-found" component={NotFound} />
                     </Switch>
                 </main>

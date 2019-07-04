@@ -66,7 +66,7 @@ class Form extends Component {
             <button className="btn btn-primary" disabled={this.validate()}>{label}</button>
         )
     }
-    renderSelect(name, label, option) {
+    renderSelect(name, label, options) {
         const { data, errors } = this.state;
         return (
             <Select
