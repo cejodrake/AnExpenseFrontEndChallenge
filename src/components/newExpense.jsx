@@ -1,9 +1,20 @@
 import React, { Component } from "react";
 import Form from './common/form';
-import { async } from "q";
+
+
 
 class NewExpense extends Form {
 
+    state = {
+        date: new Date(),
+        categoriaId: "",
+        total: 0,
+        comment: ""
+
+    }
+    async componentDidMount() {
+
+    }
     doSumit = async () => {
         // do the save expense
     }
@@ -13,10 +24,11 @@ class NewExpense extends Form {
             <div className="container">
                 <h1> New Expnse </h1>
                 <form onSubmit={this.handleSubmit}>
-                    {this.renderInput("Date", "date", "date")}
-                    {this.renderInput("Categoria", "categoria")}
-                    {this.renderInput("Comment", "comment")}
-                    {this.renderButton("save")}
+                    {this.renderInput("date", "date", "date")}
+                    {this.renderInput("categoria", "categoria", "categoria")}
+                    {this.renderInput("total", "total", "number")}
+                    {this.renderInput("comment", "comment")}
+                    {this.renderButton("Save")}
                 </form>
             </div>
 
