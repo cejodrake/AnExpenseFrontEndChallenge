@@ -61,11 +61,11 @@ class Form extends Component {
         );
 
     };
+
     renderButton(label) {
-        return (
-            <button className="btn btn-primary" disabled={this.validate()}>{label}</button>
-        )
+        return (<button className="btn btn-primary"> {label}</button >)
     }
+
     renderSelect(name, label, options) {
         const { data, errors } = this.state;
         return (

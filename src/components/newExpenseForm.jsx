@@ -17,16 +17,20 @@ class NewExpenseForm extends Form {
         errors: {}
     }
 
+
+
     render() {
         return (
             <div className="container">
-                <h1> New Expnse </h1>
-                <form onSubmit={this.handleSubmit}>
-                    {this.renderInput("date", "Date")}
-                    {this.renderInput("categoriaId", "Categoria")}
-                    {this.renderInput("total", "Total", "number")}
-                    {this.renderInput("comment", "Comment")}
-                    {this.renderButton("Save")}
+                <h1> New Expense !!! </h1>
+                <form>
+                    <div className="container">
+                        {this.renderInput("date", "Date")}
+                        {this.renderInput("categorieId", "Categories")}
+                        {this.renderInput("total", "Total", "number")}
+                        {this.renderInput("comment", "Comment about your expense")}
+                        {this.renderButton("Save")}
+                    </div>
                 </form>
             </div>
 
