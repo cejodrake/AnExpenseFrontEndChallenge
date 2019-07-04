@@ -65,6 +65,13 @@ class Form extends Component {
             <button className="btn btn-primary" disabled={this.validate()}>{label}</button>
         )
     }
+    renderSelect(name, label, option) {
+        return (
+            <Select>
+
+            </Select>
+        )
+    }
 
 }
 export default Form;

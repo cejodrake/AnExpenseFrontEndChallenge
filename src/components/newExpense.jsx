@@ -8,8 +8,10 @@ class NewExpense extends Form {
             <div className="container">
                 <h1> New Expnse </h1>
                 <form onSubmit={this.handleSubmit}>
-                    {this.renderInput
-                    }
+                    {this.renderInput("Date", "date", "date")}
+                    {this.renderInput("Categoria", "categoria")}
+                    {this.renderInput("Comment", "comment")}
+                    {this.renderButton("save")}
                 </form>
             </div>
 
@@ -17,3 +19,5 @@ class NewExpense extends Form {
     }
 
 }
+
+export default NewExpense;
