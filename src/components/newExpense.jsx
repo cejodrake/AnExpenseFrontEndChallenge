@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import Form from './common/form';
+import { async } from "q";
 
 class NewExpense extends Form {
+
+    doSumit = async () => {
+        // do the save expense
+    }
 
     render() {
         return (
