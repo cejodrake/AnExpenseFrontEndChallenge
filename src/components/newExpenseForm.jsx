@@ -3,8 +3,6 @@ import Form from './common/form';
 import Joi from 'joi-browser';
 import { getCategories } from "../services/categorieService";
 
-
-
 class NewExpenseForm extends Form {
 
     state = {
@@ -29,14 +27,22 @@ class NewExpenseForm extends Form {
         this.getAllCategories();
     }
     doSumit = async () => {
-        // do the save expense
+        await saveExpense(expense);
+        window.location("/reports")
     }
 
-    async   getAllCategories() {
+    async getAllCategories() {
         const { data: categories } = await getCategories();
         this.setState({ categories });
+    }
 
-
+    createExpense(expense) {
+        return {
+            _id: expense._id,
+            categorieId: expense.categories._id,
+            total: expense.total,
+            comment: expense.comment
+        };
     }
 
     render() {
