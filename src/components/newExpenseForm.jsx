@@ -22,9 +22,7 @@ class NewExpenseForm extends Form {
         date: Joi.date().required().label('Date'),
         categorieId: Joi.string().required().label('Categories'),
         total: Joi.number().required().min(0).label('Total'),
-
-
-
+        comment: Joi.string().required().max(30).label('Comment')
     }
 
     async componentDidMount() {
@@ -48,7 +46,7 @@ class NewExpenseForm extends Form {
                 <form>
                     <div className="container">
                         {this.renderInput("date", "Date", "date")}
-                        {this.renderSelect("id", "Categories", this.state.categories)}
+                        {this.renderSelect("categorieId", "Categories", this.state.categories)}
                         {this.renderInput("total", "Total", "number")}
                         {this.renderInput("comment", "Comment about your expense")}
                         {this.renderButton("Save")}
