@@ -3,6 +3,8 @@ import Form from './common/form';
 import Joi from 'joi-browser';
 import { getCategories } from "../services/categorieService";
 
+import { saveExpense } from '../services/expenseService';
+
 class NewExpenseForm extends Form {
 
     state = {
@@ -15,6 +17,7 @@ class NewExpenseForm extends Form {
         categories: [],
         errors: {}
     }
+
     schema = {
         _id: Joi.string(),
         date: Joi.date().required().label('Date'),
@@ -27,6 +30,7 @@ class NewExpenseForm extends Form {
         this.getAllCategories();
     }
     doSumit = async () => {
+
         await saveExpense(expense);
         window.location("/reports")
     }
@@ -36,12 +40,12 @@ class NewExpenseForm extends Form {
         this.setState({ categories });
     }
 
-    createExpense(expense) {
+    createExpense(expensive) {
         return {
-            _id: expense._id,
-            categorieId: expense.categories._id,
-            total: expense.total,
-            comment: expense.comment
+            _id: expensive._id,
+            categorieId: expensive.categories._id,
+            total: expensive.total,
+            comment: expensive.comment
         };
     }
 
@@ -49,7 +53,7 @@ class NewExpenseForm extends Form {
         return (
             <div className="container">
                 <h1> New Expense !!! </h1>
-                <form>
+                <form onSubmit={this.onSubmit}>
                     <div className="container">
                         {this.renderInput("date", "Date", "date")}
                         {this.renderSelect("categorieId", "Categories", this.state.categories)}
