@@ -10,6 +10,7 @@ import NavBar from './components/common/navBar';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css'
 import NotFound from './components/notfound';
+import RegisterForm from './components/registerForm';
 
 
 
@@ -28,7 +29,7 @@ class App extends Component {
                 <main className="container">
                     <Switch>
                         <Route path="/login" component={LoginForm} />
-
+                        <Route path="/register" component={RegisterForm} />
                         <Route path="/newexpense" component={NewExpenseForm} />
                         <Route path="/not-found" component={NotFound} />
                     </Switch>

@@ -16,6 +16,7 @@ class NewExpenseForm extends Form {
             total: 0,
             comments: ""
         },
+
         categories: [],
         errors: {}
     }
@@ -30,11 +31,20 @@ class NewExpenseForm extends Form {
 
     async componentDidMount() {
         this.getAllCategories();
-        //    this.generateExpese();
     }
     doSubmit = async () => {
 
-        const res = await saveExpense(this.state.data);
+        try {
+            const res = await saveExpense(this.state.data);
+        } catch (error) {
+            if (error.response && error.response.status === 400) {
+                const errors = { ...this.state.errors };
+                errors.date = error.response.data;
+                toast.error(this.setState({ errors }));
+
+            }
+        }
+
 
         toast.success("Success");
 

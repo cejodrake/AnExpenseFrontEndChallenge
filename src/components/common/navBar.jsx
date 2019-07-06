@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const NavBar = ({ user }) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" >Someone Care Your Money</a>
+            <a className="navbar-brand" >Your Expenses</a>
             <button className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
