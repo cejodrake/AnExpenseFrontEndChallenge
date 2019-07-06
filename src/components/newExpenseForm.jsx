@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import Form from './common/form';
 import Joi from 'joi-browser';
 import { getCategories } from "../services/categorieService";
 
 import { saveExpense } from '../services/expenseService';
 
+
 class NewExpenseForm extends Form {
 
     state = {
         data: {
             date: "",
-            categoriaId: "",
+            categorieId: "",
             total: 0,
             comment: ""
         },
@@ -28,11 +29,12 @@ class NewExpenseForm extends Form {
 
     async componentDidMount() {
         this.getAllCategories();
+        //    this.generateExpese();
     }
-    doSumit = async () => {
-
-        await saveExpense(expense);
-        window.location("/reports")
+    doSubmit = async () => {
+        console.log(this.state.data)
+        await saveExpense(this.state.data);
+        window.location("/")
     }
 
     async getAllCategories() {
@@ -40,9 +42,24 @@ class NewExpenseForm extends Form {
         this.setState({ categories });
     }
 
+    /*  async generateExpese() {
+          const expenseId = this.props.match.params.id;
+          if (expenseId === "new") return;
+  
+          try {
+              const { data: expense } = await getExpense(expenseId);
+              this.setState({ data: this.createExpense(expense) })
+  
+          } catch (ex) {
+              if (ex.response && ex.response.status === 404) {
+                  return this.props.history.replace("/not-found");
+              }
+          }
+      }*/
     createExpense(expensive) {
         return {
             _id: expensive._id,
+            date: new Date(expensive.date),
             categorieId: expensive.categories._id,
             total: expensive.total,
             comment: expensive.comment
@@ -53,7 +70,7 @@ class NewExpenseForm extends Form {
         return (
             <div className="container">
                 <h1> New Expense !!! </h1>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <div className="container">
                         {this.renderInput("date", "Date", "date")}
                         {this.renderSelect("categorieId", "Categories", this.state.categories)}
