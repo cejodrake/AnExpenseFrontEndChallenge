@@ -28,6 +28,7 @@ class App extends Component {
                 <main className="container">
                     <Switch>
                         <Route path="/login" component={LoginForm} />
+
                         <Route path="/newexpense" component={NewExpenseForm} />
                         <Route path="/not-found" component={NotFound} />
                     </Switch>

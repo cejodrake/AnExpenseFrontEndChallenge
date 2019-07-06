@@ -14,7 +14,7 @@ class Form extends Component {
 
     validate = () => {
         const options = { abortEarly: false };
-        const { error } = Joi.validate(this.state.date, this.schema, options);
+        const { error } = Joi.validate(this.state.data, this.schema, options);
         if (!error) return null;
         const errors = {};
         for (let item of error.details) {
@@ -47,7 +47,7 @@ class Form extends Component {
 
     };
 
-    renderInput(name, label, type = 'text') {
+    renderInput(name, label, type = 'text', ) {
         const { data, errors } = this.state;
         return (
             <Input
@@ -63,7 +63,7 @@ class Form extends Component {
     };
 
     renderButton(label) {
-        return (<button className="btn btn-primary"> {label}</button >)
+        return (<button className="btn btn-primary" disabled={this.validate()}> {label}</button >)
     }
 
     renderSelect(name, label, options) {

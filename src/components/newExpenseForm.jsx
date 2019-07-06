@@ -1,6 +1,7 @@
 import React from "react";
 import Form from './common/form';
 import Joi from 'joi-browser';
+import { toast } from 'react-toastify';
 import { getCategories } from "../services/categorieService";
 
 import { saveExpense } from '../services/expenseService';
@@ -32,9 +33,15 @@ class NewExpenseForm extends Form {
         //    this.generateExpese();
     }
     doSubmit = async () => {
-        console.log(this.state.data)
-        await saveExpense(this.state.data);
-        window.location("/")
+
+        const res = await saveExpense(this.state.data);
+
+        toast.success("Success");
+
+
+
+        //  window.location = "/newexpense"
+
     }
 
     async getAllCategories() {
@@ -55,10 +62,10 @@ class NewExpenseForm extends Form {
 
     render() {
         return (
-            <div className="container">
-                <h1> New Expense !!! </h1>
+            <div className="container-fluid">
+                <h1> New Expense  </h1>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="container">
+                    <div className="form-group">
                         {this.renderInput("date", "Date", "date")}
                         {this.renderSelect("categorieId", "Categories", this.state.categories)}
                         {this.renderInput("total", "Total", "number")}
