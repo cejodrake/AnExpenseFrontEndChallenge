@@ -13,7 +13,7 @@ class NewExpenseForm extends Form {
             date: "",
             categorieId: "",
             total: 0,
-            comment: ""
+            comments: ""
         },
         categories: [],
         errors: {}
@@ -24,7 +24,7 @@ class NewExpenseForm extends Form {
         date: Joi.date().required().label('Date'),
         categorieId: Joi.string().required().label('Categories'),
         total: Joi.number().required().min(0).label('Total'),
-        comment: Joi.string().required().max(30).label('Comment')
+        comments: Joi.string().required().max(30).label('Comments')
     }
 
     async componentDidMount() {
@@ -42,27 +42,14 @@ class NewExpenseForm extends Form {
         this.setState({ categories });
     }
 
-    /*  async generateExpese() {
-          const expenseId = this.props.match.params.id;
-          if (expenseId === "new") return;
-  
-          try {
-              const { data: expense } = await getExpense(expenseId);
-              this.setState({ data: this.createExpense(expense) })
-  
-          } catch (ex) {
-              if (ex.response && ex.response.status === 404) {
-                  return this.props.history.replace("/not-found");
-              }
-          }
-      }*/
+
     createExpense(expensive) {
         return {
             _id: expensive._id,
             date: new Date(expensive.date),
             categorieId: expensive.categories._id,
             total: expensive.total,
-            comment: expensive.comment
+            comments: expensive.comments
         };
     }
 
@@ -75,7 +62,7 @@ class NewExpenseForm extends Form {
                         {this.renderInput("date", "Date", "date")}
                         {this.renderSelect("categorieId", "Categories", this.state.categories)}
                         {this.renderInput("total", "Total", "number")}
-                        {this.renderInput("comment", "Comment about your expense")}
+                        {this.renderInput("comments", "Comments")}
                         {this.renderButton("Save")}
                     </div>
                 </form>
