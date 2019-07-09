@@ -1,10 +1,10 @@
-import { React } from "react";
+import React from "react";
 import Form from './common/form';
 
 import Joi from 'joi-browser';
 
 
-class ReactForm extends Form {
+class ReportForm extends Form {
     state = {
         data: { dateInitial: "", dateEnd: "" },
         errors: {}
@@ -12,8 +12,8 @@ class ReactForm extends Form {
 
 
     schema = {
-        dateInitial: Joi.date().format('YYYY/-MM-DD', 'DD-MM-YYY'),
-        dateEnd: Joi.date().format('YYYY/-MM-DD', 'DD-MM-YYY')
+        dateInitial: Joi.date().min('1-1-2019').iso().required(),
+        dateEnd: Joi.date().min('1-1-2019').iso().required(),
 
     }
 
@@ -33,10 +33,13 @@ class ReactForm extends Form {
     render() {
         return (
             <div className="container">
-                <h1> Report Expenses</h1>
+                <h1> Report</h1>
                 <form onSubmit={this.handleSubmit}>
-                    {this.renderInput("dateInitial", "DateInitial", "date")}\
-                    {this.renderInput("dateEnd", "DateEnd")}
+
+                    {this.renderInput("dateInitial", "Date Inital", "date")}
+                    {this.renderInput("dateEnd", "Date End", "date")}
+                    {this.renderButton("Filter")}
+
                 </form>
 
             </div>
@@ -44,4 +47,4 @@ class ReactForm extends Form {
     };
 };
 
-export default ReactForm;
+export default ReportForm;

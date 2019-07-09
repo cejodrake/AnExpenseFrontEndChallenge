@@ -11,6 +11,7 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css'
 import NotFound from './components/notfound';
 import RegisterForm from './components/registerForm';
+import ReportForm from './components/reportForm';
 
 
 
@@ -30,6 +31,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/login" component={LoginForm} />
                         <Route path="/register" component={RegisterForm} />
+                        <Route path="/report" component={ReportForm} />
                         <Route path="/newexpense" component={NewExpenseForm} />
                         <Route path="/not-found" component={NotFound} />
                     </Switch>
