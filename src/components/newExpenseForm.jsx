@@ -76,11 +76,16 @@ class NewExpenseForm extends Form {
                 <h1> New Expense  </h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        {this.renderInput("date", "Date", "date")}
-                        {this.renderSelect("categorieId", "Categories", this.state.categories)}
-                        {this.renderInput("total", "Total", "number")}
-                        {this.renderInput("comments", "Comments")}
-                        {this.renderButton("Save")}
+                        <div className="row">
+
+                            <div className="col-l5">
+                                {this.renderInput("date", "Date", "date")}
+                                {this.renderSelect("categorieId", "Categories", this.state.categories)}
+                                {this.renderInput("total", "Total", "number")}
+                                {this.renderInput("comments", "Comments")}
+                                {this.renderButton("Save")}
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
