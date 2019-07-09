@@ -7,7 +7,8 @@ import Joi from 'joi-browser';
 class ReportForm extends Form {
     state = {
         data: { dateInitial: "", dateEnd: "" },
-        errors: {}
+        errors: {},
+        allExpenses: []
     }
 
 
@@ -36,13 +37,17 @@ class ReportForm extends Form {
                 <h1> Report</h1>
                 <form onSubmit={this.handleSubmit}>
 
+
                     {this.renderInput("dateInitial", "Date Inital", "date")}
                     {this.renderInput("dateEnd", "Date End", "date")}
-                    {this.renderButton("Filter")}
 
+                    <tbody>
+
+                    </tbody>
+                    {this.renderButton("Filter")}
                 </form>
 
-            </div>
+            </div >
         );
     };
 };
