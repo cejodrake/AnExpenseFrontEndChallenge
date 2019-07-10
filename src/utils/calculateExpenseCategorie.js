@@ -12,5 +12,7 @@ export function calculateExpense(data) {
 };
 
 export function maxExpenseforCategorie(data) {
-    return _.max(data['total']);
+    return _.maxBy(data, function (o) {
+        return o.total
+    });
 }
