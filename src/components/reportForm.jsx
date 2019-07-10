@@ -1,12 +1,14 @@
 import React from "react";
 import Form from './common/form';
 
+
 import Joi from 'joi-browser';
 import { toast } from 'react-toastify';
 
 import { calculateExpense, maxExpenseforCategorie } from '../utils/calculateExpenseCategorie';
 
 import { getExpensesForFilter } from './../services/reportService';
+import Table from './common/table';
 
 
 class ReportForm extends Form {
@@ -30,7 +32,7 @@ class ReportForm extends Form {
             const expenseCategorieGroup = calculateExpense(allExpenses);
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);
 
-            toast.success("“spending too much money on :" + maxExpense['name'] + ".. as always");
+            toast.warn("“spending too much money on :" + maxExpense['name'] + ".. as always");
 
 
             this.setState({ allExpenses })
@@ -47,7 +49,8 @@ class ReportForm extends Form {
     render() {
         const { allExpenses } = this.state
 
-        if (allExpenses === []) return toast.success("error");
+
+        if (allExpenses === null || allExpenses === "undefined" || allExpenses === []) return null;
 
         return (
 
@@ -68,24 +71,11 @@ class ReportForm extends Form {
                                             <tr>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Categorie</th>
-                                                <th scope="col">Total</th>
+                                                <th scope="col">Total Expense</th>
                                                 <th scope="col">Comments</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-
-                                            {allExpenses.map(info => (
-                                                <tr key={info._id}>
-                                                    <td>{new Date(info.date).toDateString()}</td>
-                                                    <td>{info.categorie.name}</td>
-                                                    <td> {info.total}</td>
-                                                    <td> {info.comments}</td>
-
-                                                </tr>
-                                            ))}
-
-
-                                        </tbody>
+                                        <Table data={allExpenses} />
                                     </table>
                                 </div>
                             </div>
