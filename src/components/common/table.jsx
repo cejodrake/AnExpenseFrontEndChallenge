@@ -6,7 +6,6 @@ class Table extends Component {
 
         return (
             <tbody>
-
                 {
                     data.map(info => (
                         <tr key={info._id}>
@@ -18,7 +17,6 @@ class Table extends Component {
                         </tr>
                     ))
                 }
-
 
             </tbody >
         )

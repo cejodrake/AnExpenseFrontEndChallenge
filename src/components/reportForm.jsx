@@ -1,14 +1,11 @@
 import React from "react";
 import Form from './common/form';
-
-
 import Joi from 'joi-browser';
 import { toast } from 'react-toastify';
-
 import { calculateExpense, maxExpenseforCategorie } from '../utils/calculateExpenseCategorie';
-
 import { getExpensesForFilter } from './../services/reportService';
 import Table from './common/table';
+import HeadColumnsTable from './common/columnTable';
 
 
 class ReportForm extends Form {
@@ -32,6 +29,7 @@ class ReportForm extends Form {
             const expenseCategorieGroup = calculateExpense(allExpenses);
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);
 
+
             toast.warn("“spending too much money on :" + maxExpense['name'] + ".. as always");
 
 
@@ -48,12 +46,7 @@ class ReportForm extends Form {
 
     render() {
         const { allExpenses } = this.state
-
-
-        if (allExpenses === null || allExpenses === "undefined" || allExpenses === []) return null;
-
         return (
-
             <div className="container">
                 <h1> Report</h1>
                 <div className="jumbotron ">
@@ -68,12 +61,7 @@ class ReportForm extends Form {
                                 <div className="table-wrapper-scroll-y  myscrollbar ">
                                     <table className="table table-bordered table-striped mb-0">
                                         <thead>
-                                            <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Categorie</th>
-                                                <th scope="col">Total Expense</th>
-                                                <th scope="col">Comments</th>
-                                            </tr>
+                                            <HeadColumnsTable />
                                         </thead>
                                         <Table data={allExpenses} />
                                     </table>
