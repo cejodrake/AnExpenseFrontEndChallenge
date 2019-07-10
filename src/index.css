@@ -13,8 +13,8 @@ code {
 }
 .myscrollbar{
 position: relative;
-;
-overflow: auto;
+height: 650px;
+overflow-y: scroll;
 }
 .table-wrapper-scroll-y {
 display: block;

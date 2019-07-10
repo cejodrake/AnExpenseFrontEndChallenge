@@ -19,7 +19,7 @@ class ReportForm extends Form {
     }
 
     schema = {
-        dateInitial: Joi.date().min('1-1-2019').iso().required(),
+        dateInitial: Joi.date().min('1-1-2000').iso().required(),
         dateEnd: Joi.date().min('1-1-2019').iso().required(),
 
     }
@@ -62,31 +62,32 @@ class ReportForm extends Form {
                                 {this.renderButton("Filter")}
                             </div>
                             <div className="col">
-                                <div className="table-wrapper-scroll-y  myscrollbar "></div>
-                                <table className="table table-bordered table-striped mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Categorie</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Comments</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        {allExpenses.map(info => (
-                                            <tr key={info._id}>
-                                                <td>{info.date}</td>
-                                                <td>{info.categorie.name}</td>
-                                                <td>{info.total}</td>
-                                                <td> {info.comments}</td>
-
+                                <div className="table-wrapper-scroll-y  myscrollbar ">
+                                    <table className="table table-bordered table-striped mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Categorie</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Comments</th>
                                             </tr>
-                                        ))}
+                                        </thead>
+                                        <tbody>
+
+                                            {allExpenses.map(info => (
+                                                <tr key={info._id}>
+                                                    <td>{new Date(info.date).toDateString()}</td>
+                                                    <td>{info.categorie.name}</td>
+                                                    <td> {info.total}</td>
+                                                    <td> {info.comments}</td>
+
+                                                </tr>
+                                            ))}
 
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
 
