@@ -4,7 +4,10 @@ import Form from './common/form';
 import Joi from 'joi-browser';
 import { toast } from 'react-toastify';
 
+import { calculateExpense, maxExpenseforCategorie } from '../utils/calculateExpenseCategorie';
+
 import { getExpensesForFilter } from './../services/reportService';
+
 
 class ReportForm extends Form {
     state = {
@@ -24,6 +27,9 @@ class ReportForm extends Form {
     doSubmit = async () => {
         try {
             const { data: allExpenses } = await getExpensesForFilter(this.state.data);
+            console.log(calculateExpense(allExpenses));
+            console.log(maxExpenseforCategorie(calculateExpense(allExpenses)));
+            console.log("tu gastas mucho dinero en :" + maxExpenseforCategorie(calculateExpense(allExpenses).name))
 
             this.setState({ allExpenses })
 
