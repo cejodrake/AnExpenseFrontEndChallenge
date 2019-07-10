@@ -36,21 +36,16 @@ class NewExpenseForm extends Form {
 
         try {
             const res = await saveExpense(this.state.data);
+            toast.success("Success");
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 const errors = { ...this.state.errors };
                 errors.date = error.response.data;
                 toast.error(this.setState({ errors }));
 
+
             }
         }
-
-
-        toast.success("Success");
-
-
-
-        //  window.location = "/newexpense"
 
     }
 
@@ -72,18 +67,21 @@ class NewExpenseForm extends Form {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container">
                 <h1> New Expense  </h1>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <div className="row">
+                    <div className="jumbotron ">
+                        <div className="form-group">
+                            <div className="row">
 
-                            <div className="col-l5">
-                                {this.renderInput("date", "Date", "date")}
-                                {this.renderSelect("categorieId", "Categories", this.state.categories)}
-                                {this.renderInput("total", "Total", "number")}
-                                {this.renderInput("comments", "Comments")}
-                                {this.renderButton("Save")}
+                                <div className="col-4 ">
+
+                                    {this.renderInput("date", "Date", "date")}
+                                    {this.renderSelect("categorieId", "Categories", this.state.categories)}
+                                    {this.renderInput("total", "Total", "number")}
+                                    {this.renderInput("comments", "Comments")}
+                                    {this.renderButton("Save")}
+                                </div>
                             </div>
                         </div>
                     </div>

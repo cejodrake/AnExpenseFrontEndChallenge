@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.myscrollbar{
+position: relative;
+;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
