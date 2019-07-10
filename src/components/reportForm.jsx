@@ -15,7 +15,6 @@ class ReportForm extends Form {
         allExpenses: []
     }
 
-
     schema = {
         dateInitial: Joi.date().min('1-1-2019').iso().required(),
         dateEnd: Joi.date().min('1-1-2019').iso().required(),
@@ -38,7 +37,7 @@ class ReportForm extends Form {
     }
 
     render() {
-        const { allExpenses, Boolean } = this.state
+        const { allExpenses } = this.state
 
         if (allExpenses === []) return toast.success("error");
 

@@ -24,6 +24,7 @@ class RegisterForm extends Form {
         try {
             const res = await register(this.state.data);
             window.location = "/"
+
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 const errors = { ...this.state.errors };
@@ -37,10 +38,15 @@ class RegisterForm extends Form {
             <div className="container">
                 <h1>Register</h1>
                 <form onSubmit={this.handleSubmit} >
-                    {this.renderInput('username', 'Username')}
-                    {this.renderInput('password', 'Password', 'password')}
-                    {this.renderInput('name', 'Name')}
-                    {this.renderButton('Register')}
+                    <div className="row">
+                        <div className="col-6">
+                            {this.renderInput('username', 'Username')}
+                            {this.renderInput('password', 'Password', 'password')}
+                            {this.renderInput('name', 'Name')}
+                            {this.renderButton('Register')}
+                        </div>
+                    </div>
+
                 </form>
             </div>
         );
