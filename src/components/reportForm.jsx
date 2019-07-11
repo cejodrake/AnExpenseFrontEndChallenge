@@ -26,8 +26,11 @@ class ReportForm extends Form {
     doSubmit = async () => {
         try {
             const { data: allExpenses } = await getExpensesForFilter(this.state.data);
+
             const expenseCategorieGroup = calculateExpense(allExpenses);
+
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);
+
 
 
             toast.warn("“spending too much money on :" + maxExpense['name'] + ".. as always");
