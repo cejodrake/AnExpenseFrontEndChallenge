@@ -37,10 +37,10 @@ class NewExpenseForm extends Form {
 
         try {
             await saveExpense(this.state.data);
-            this.state.data.date = "";
-            this.state.categories = "";
-            this.state.total = 0;
-            this.state.comments = ""
+            this.clearInput();
+
+
+
             toast.success("Success");
 
         } catch (error) {
