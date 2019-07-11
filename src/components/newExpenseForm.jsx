@@ -68,7 +68,16 @@ class NewExpenseForm extends Form {
             comments: expensive.comments
         };
     }
-
+    clearInput() {
+        this.setState({
+            data: {
+                date: "",
+                categorieId: "",
+                total: 0,
+                comments: ""
+            },
+        })
+    }
     render() {
         return (
             <div className="container">
