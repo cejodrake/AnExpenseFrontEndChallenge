@@ -26,7 +26,8 @@ class NewExpenseForm extends Form {
         date: Joi.date().required().label('Date'),
         categorieId: Joi.string().required().label('Categories'),
         total: Joi.number().required().min(0).label('Total'),
-        comments: Joi.string().required().max(30).label('Comments')
+        comments: Joi.string()
+
     }
 
     async componentDidMount() {
@@ -35,15 +36,18 @@ class NewExpenseForm extends Form {
     doSubmit = async () => {
 
         try {
-            const res = await saveExpense(this.state.data);
+            await saveExpense(this.state.data);
+            this.state.data.date = "";
+            this.state.categories = "";
+            this.state.total = 0;
+            this.state.comments = ""
             toast.success("Success");
+
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 const errors = { ...this.state.errors };
                 errors.date = error.response.data;
                 toast.error(this.setState({ errors }));
-
-
             }
         }
 
@@ -73,9 +77,7 @@ class NewExpenseForm extends Form {
                     <div className="jumbotron ">
                         <div className="form-group">
                             <div className="row">
-
                                 <div className="col-4 ">
-
                                     {this.renderInput("date", "Date", "date")}
                                     {this.renderSelect("categorieId", "Categories", this.state.categories)}
                                     {this.renderInput("total", "Total", "number")}
