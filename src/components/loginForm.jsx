@@ -35,7 +35,7 @@ class LoginForm extends Form {
 
     render() {
         return (
-            <div className="content">
+            <div className="container">
 
                 <h1 >Login </h1>
                 <form onSubmit={this.handleSubmit}>
