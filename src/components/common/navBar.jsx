@@ -18,8 +18,12 @@ const NavBar = ({ user }) => {
                 <div className="navbar-nav">
                     <NavLink className="nav-item nav-link" to="/newexpense"> Add Expense  </NavLink>
                     <NavLink className="nav-item nav-link" to="/report"> My Reports  </NavLink>
-                    <NavLink className="nav-item nav-link" to="/login"> Login   </NavLink>
-                    <NavLink className="nav-item nav-link" to="/Register"> Register   </NavLink>
+                    {!user && (
+                        <React.Fragment>
+                            <NavLink className="nav-item nav-link" to="/login"> Login   </NavLink>
+                            <NavLink className="nav-item nav-link" to="/Register"> Register   </NavLink>
+                        </React.Fragment>
+                    )}
                 </div>
 
             </div>

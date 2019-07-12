@@ -31,11 +31,7 @@ class ReportForm extends Form {
 
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);
 
-
-
             toast.warn("“spending too much money on :" + maxExpense['name'] + ".. as always");
-
-
             this.setState({ allExpenses })
 
         } catch (ex) {
@@ -46,6 +42,7 @@ class ReportForm extends Form {
             }
         }
     }
+
 
     render() {
         const { allExpenses } = this.state

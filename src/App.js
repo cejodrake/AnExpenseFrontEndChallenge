@@ -13,27 +13,37 @@ import NotFound from './components/notfound';
 import RegisterForm from './components/registerForm';
 import ReportForm from './components/reportForm';
 
+import auth from './services/authServices';
+
 
 
 class App extends Component {
 
     state = {
-        user: ""
+
+    }
+
+    componentDidMount() {
+        const user = auth.getCurrenUser();
+        this.setState({ user });
     }
     render() {
+        const { user } = this.state;
         return (
 
 
             <React.Fragment>
+
                 <ToastContainer user="Juan Carlos" />
-                <NavBar />
+                <NavBar user={user} />
                 <main className="container">
                     <Switch>
                         <Route path="/login" component={LoginForm} />
                         <Route path="/register" component={RegisterForm} />
                         <Route path="/report" component={ReportForm} />
                         <Route path="/newexpense" component={NewExpenseForm} />
-                        <Route path="/not-found" component={NotFound} />
+                        <Redirect path="/not-found" component={NotFound} />
+                        <Redirect from="/" exact to="/login" />
                     </Switch>
                 </main>
             </React.Fragment>

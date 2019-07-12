@@ -39,8 +39,6 @@ class NewExpenseForm extends Form {
             await saveExpense(this.state.data);
             this.clearInput();
 
-
-
             toast.success("Success");
 
         } catch (error) {
