@@ -36,19 +36,21 @@ class LoginForm extends Form {
     render() {
         return (
             <div className="container">
+                <div className="divCenter">
+                    <h1 >Login </h1>
+                    <form onSubmit={this.handleSubmit}>
 
-                <h1 >Login </h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="row">
-                        <div className="col-6">
-                            {this.renderInput('username', 'Username')}
-                            {this.renderInput('password', 'Password', 'password')}
-                            {this.renderButton('Login')}
+
+                        <div className="row">
+                            <div className="col-sm-10 ">
+                                {this.renderInput('username', 'Username')}
+                                {this.renderInput('password', 'Password', 'password')}
+                                {this.renderButton('Login')}
+                            </div>
                         </div>
-                    </div>
 
-                </form>
-
+                    </form>
+                </div>
             </div>
         )
     }

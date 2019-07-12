@@ -36,18 +36,21 @@ class RegisterForm extends Form {
     render() {
         return (
             <div className="container">
-                <h1>Register</h1>
-                <form onSubmit={this.handleSubmit} >
-                    <div className="row">
-                        <div className="col-6">
-                            {this.renderInput('username', 'Username')}
-                            {this.renderInput('password', 'Password', 'password')}
-                            {this.renderInput('name', 'Name')}
-                            {this.renderButton('Register')}
-                        </div>
-                    </div>
+                <div className="divCenter">
 
-                </form>
+                    <h1>Register</h1>
+                    <form onSubmit={this.handleSubmit} >
+                        <div className="row">
+                            <div className="col-sm-10">
+                                {this.renderInput('username', 'Username')}
+                                {this.renderInput('password', 'Password', 'password')}
+                                {this.renderInput('name', 'Name')}
+                                {this.renderButton('Register')}
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         );
     }

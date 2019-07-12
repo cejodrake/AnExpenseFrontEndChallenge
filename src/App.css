@@ -19,6 +19,16 @@
   color: white;
 }
 
+.divCenter {
+position:absolute;
+top: 25%;
+left: 45%;
+height:400px;
+width:500px;
+  
+  
+}
+
 .App-link {
   color: #61dafb;
 }
