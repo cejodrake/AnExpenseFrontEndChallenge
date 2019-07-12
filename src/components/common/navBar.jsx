@@ -35,7 +35,7 @@ const NavBar = ({ user }) => {
                                 </NavLink>
 
                                 <NavLink className="nav-item nav-link" to="/logout" >
-                                    logout
+                                    Logout
                                 </NavLink>
                             </React.Fragment>
                         )

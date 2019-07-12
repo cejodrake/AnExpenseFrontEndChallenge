@@ -23,7 +23,7 @@ class RegisterForm extends Form {
     doSubmit = async () => {
         try {
             const res = await register(this.state.data);
-            window.location = "/"
+            window.location = "/login"
 
         } catch (error) {
             if (error.response && error.response.status === 400) {
