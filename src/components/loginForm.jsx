@@ -3,8 +3,8 @@ import React from 'react';
 import Joi from 'joi-browser';
 import Form from './common/form';
 import auth from '../services/authServices';
-import { Redirect } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
 
 class LoginForm extends Form {
 
@@ -27,8 +27,8 @@ class LoginForm extends Form {
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
                 const errors = { ...this.state.errors };
-                errors.username = ex.response.status;
-                this.setState = ({ errors });
+                toast.error(errors.username = ex.response.data);
+
             }
         }
     }
