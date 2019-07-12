@@ -45,7 +45,7 @@ class App extends Component {
                         <Route path="/report" component={ReportForm} />
                         <Route path="/newexpense" component={NewExpenseForm} />
                         <Route path="/logout" component={Logout} />
-                        <Redirect path="/not-found" component={NotFound} />
+                        <Route path="/not-found" component={NotFound} />
                         <Redirect from="/" exact to="/login" />
                     </Switch>
                 </main>
