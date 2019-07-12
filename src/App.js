@@ -13,7 +13,9 @@ import NotFound from './components/notfound';
 import RegisterForm from './components/registerForm';
 import ReportForm from './components/reportForm';
 
+
 import auth from './services/authServices';
+import Logout from './components/logout';
 
 
 
@@ -34,7 +36,7 @@ class App extends Component {
 
             <React.Fragment>
 
-                <ToastContainer user="Juan Carlos" />
+                <ToastContainer user={user} />
                 <NavBar user={user} />
                 <main className="container">
                     <Switch>

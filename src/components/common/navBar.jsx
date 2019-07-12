@@ -16,8 +16,8 @@ const NavBar = ({ user }) => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <NavLink className="nav-item nav-link" to="/newexpense"> Add Expense  </NavLink>
-                    <NavLink className="nav-item nav-link" to="/report"> My Reports  </NavLink>
+
+
                     {!user && (
                         <React.Fragment>
                             <NavLink className="nav-item nav-link" to="/login"> Login   </NavLink>
@@ -28,13 +28,15 @@ const NavBar = ({ user }) => {
                     {
                         user && (
                             <React.Fragment>
+                                <NavLink className="nav-item nav-link" to="/newexpense"> Add Expense  </NavLink>
+                                <NavLink className="nav-item nav-link" to="/report"> My Reports  </NavLink>
                                 <NavLink className="nav-item nav-link" to="/profile" >
                                     {user.name}
                                 </NavLink>
 
                                 <NavLink className="nav-item nav-link" to="/logout" >
                                     logout
-                                </NavLink>a
+                                </NavLink>
                             </React.Fragment>
                         )
                     }
