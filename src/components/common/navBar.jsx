@@ -31,7 +31,7 @@ const NavBar = ({ user }) => {
                                 <NavLink className="nav-item nav-link" to="/newexpense"> Add Expense  </NavLink>
                                 <NavLink className="nav-item nav-link" to="/report"> My Reports  </NavLink>
                                 <NavLink className="nav-item nav-link"  >
-                                    {user.name}
+                                    {console.log(user.name)}
                                 </NavLink>
 
                                 <NavLink className="nav-item nav-link" to="/logout" >
