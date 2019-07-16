@@ -15,7 +15,7 @@ class Table extends Component {
                             <td> {info.comments}</td>
 
                         </tr>
-                    ))
+                    )) 
                 }
 
             </tbody >
