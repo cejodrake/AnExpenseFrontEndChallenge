@@ -26,16 +26,18 @@ class App extends Component {
     }
 
     componentDidMount() {
+
         const user = auth.getCurrenUser();
-        console.log(user)
         this.setState({ user });
     }
+
     render() {
         const { user } = this.state;
+        console.log(user);
         return (
             <React.Fragment>
 
-                <ToastContainer user={user} />
+                <ToastContainer />
                 <NavBar user={user} />
                 <main className="container">
                     <Switch>

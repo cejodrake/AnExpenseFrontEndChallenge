@@ -6,6 +6,8 @@ import auth from '../services/authServices';
 import { register } from './../services/userService';
 import { toast } from 'react-toastify';
 
+
+import LoadingPage from './common/loading';
 class RegisterForm extends Form {
 
     state = {
@@ -22,7 +24,8 @@ class RegisterForm extends Form {
 
     doSubmit = async () => {
         try {
-            const res = await register(this.state.data);
+            await register(this.state.data);
+            this.setState({ isLoading: true })
             window.location = "/login"
 
         } catch (error) {
@@ -34,6 +37,15 @@ class RegisterForm extends Form {
         }
     }
     render() {
+
+        const { isLoading } = this.state;
+
+        if (isLoading) {
+            return (
+                <LoadingPage />
+            );
+        }
+
         return (
             <div className="container">
                 <div className="divCenter">

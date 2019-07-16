@@ -6,6 +6,7 @@ import { calculateExpense, maxExpenseforCategorie } from '../utils/calculateExpe
 import { getExpensesForFilter } from './../services/reportService';
 import Table from './common/table';
 import HeadColumnsTable from './common/columnTable';
+import LoadingPage from "./common/loading";
 
 
 class ReportForm extends Form {
@@ -26,7 +27,7 @@ class ReportForm extends Form {
     doSubmit = async () => {
         try {
             const { data: allExpenses } = await getExpensesForFilter(this.state.data);
-
+            this.setState({ isLoading: true });
             const expenseCategorieGroup = calculateExpense(allExpenses);
 
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);
@@ -45,7 +46,14 @@ class ReportForm extends Form {
 
 
     render() {
-        const { allExpenses } = this.state
+
+        const { allExpenses, isLoading } = this.state
+
+        if (isLoading) {
+            return (
+                <LoadingPage />
+            );
+        }
         return (
             <div className="container">
                 <h1> Report</h1>

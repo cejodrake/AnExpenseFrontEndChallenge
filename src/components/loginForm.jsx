@@ -6,11 +6,13 @@ import auth from '../services/authServices';
 
 import { toast } from 'react-toastify';
 
+import LoadingPage from './common/loading';
+
 class LoginForm extends Form {
 
     state = {
         data: { username: "", password: "" },
-        errors: {}
+        errors: {},
     };
 
     schema = {
@@ -22,6 +24,7 @@ class LoginForm extends Form {
         try {
             const { data } = this.state;
             await auth.login(data.username, data.password) // I should create this service 
+            this.setState({ isLoading: true })
             window.location = "/report"
 
         } catch (ex) {
@@ -34,6 +37,14 @@ class LoginForm extends Form {
     }
 
     render() {
+        const { isLoading } = this.state;
+
+        if (isLoading) {
+            return (
+                <LoadingPage />
+            )
+        };
+
         return (
             <div className="container">
                 <div className="divCenter">

@@ -9,7 +9,8 @@ class Form extends Component {
 
     state = {
         data: {},
-        errors: {}
+        errors: {},
+        isLoading: false
     };
 
     validate = () => {

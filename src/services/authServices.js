@@ -1,8 +1,6 @@
 import http from './httpServices';
 //import { apiUrl } from '../config.json'
 
-
-
 //const apiEndPoint = apiUrl + '/auth';
 const apiEndPoint = '/auth';
 const tokenKey = "token";

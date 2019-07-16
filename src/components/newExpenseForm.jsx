@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { getCategories } from "../services/categorieService";
 
 import { saveExpense } from '../services/expenseService';
+import LoadingPage from './common/loading';
 
 
 class NewExpenseForm extends Form {
@@ -37,9 +38,11 @@ class NewExpenseForm extends Form {
 
         try {
             await saveExpense(this.state.data);
+
             this.clearInput();
 
-            toast.success("Success");
+            toast.success("Your information was saved successfully");
+
 
         } catch (error) {
             if (error.response && error.response.status === 400) {
