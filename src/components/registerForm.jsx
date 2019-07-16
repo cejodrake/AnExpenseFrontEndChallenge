@@ -26,6 +26,7 @@ class RegisterForm extends Form {
         try {
             await register(this.state.data);
             this.setState({ isLoading: true })
+            toast.success("Your information was saved successfully!");
             window.location = "/login"
 
         } catch (error) {
