@@ -4,6 +4,8 @@ import Joi from 'joi-browser';
 import { toast } from 'react-toastify';
 import { getCategories } from "../services/categorieService";
 
+import auth from '../services/authServices';
+
 import { saveExpense } from '../services/expenseService';
 import LoadingPage from './common/loading';
 
@@ -15,11 +17,14 @@ class NewExpenseForm extends Form {
             date: "",
             categorieId: "",
             total: 0,
-            comments: ""
+            comments: "",
+            email: auth.getCurrenEmail() // get email for save for each user.
         },
-
         categories: [],
-        errors: {}
+        errors: {},
+
+
+
     }
 
     schema = {
@@ -27,17 +32,25 @@ class NewExpenseForm extends Form {
         date: Joi.date().required().label('Date'),
         categorieId: Joi.string().required().label('Categories'),
         total: Joi.number().required().min(0).label('Total'),
-        comments: Joi.string()
+        comments: Joi.string(),
+        email: Joi.string()
+
 
     }
 
     async componentDidMount() {
         this.getAllCategories();
+        console.log(this.state.data.email)
+
     }
     doSubmit = async () => {
 
         try {
-            await saveExpense(this.state.data);
+
+            const { data } = this.state;
+
+
+            await saveExpense(data);
 
             this.clearInput();
 
@@ -60,15 +73,6 @@ class NewExpenseForm extends Form {
     }
 
 
-    createExpense(expensive) {
-        return {
-            _id: expensive._id,
-            date: new Date(expensive.date),
-            categorieId: expensive.categories._id,
-            total: expensive.total,
-            comments: expensive.comments
-        };
-    }
     clearInput() {
         this.setState({
             data: {

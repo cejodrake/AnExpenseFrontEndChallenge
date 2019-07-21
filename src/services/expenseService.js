@@ -1,7 +1,7 @@
 import http from './httpServices';
 import { apiUrl } from '../config.json'
-//const apiEndPoint = 'http://localhost:3000/api/expenses';
-const apiEndPoint = '/expenses';
+const apiEndPoint = 'http://localhost:3000/api/expenses';
+//const apiEndPoint = '/expenses';
 
 function expenseUrl(id) {
     return `${apiEndPoint}/${id}`;
@@ -12,6 +12,7 @@ export function getExpense(expenseId) {
 }
 
 export function saveExpense(expense) {
+
 
     return http.post(apiEndPoint, expense);
 };

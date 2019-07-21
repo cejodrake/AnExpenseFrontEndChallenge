@@ -2,15 +2,16 @@ import http from './httpServices';
 import { apiUrl } from '../config.json';
 
 
-//const apiEndPoint = apiUrl + '/report';
+const apiEndPoint = apiUrl + '/report';
 
-const apiEndPoint = '/report';
+//const apiEndPoint = '/report';
 
 
-export function getExpensesForFilter(dates) {
+export function getExpensesForFilter(data) {
     return http.post(apiEndPoint, {
-        dateInitial: dates.dateInitial,
-        dateEnd: dates.dateEnd
+        dateInitial: data.dateInitial,
+        dateEnd: data.dateEnd,
+        email: data.email
     });
 };
 

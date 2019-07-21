@@ -8,10 +8,12 @@ import Table from './common/table';
 import HeadColumnsTable from './common/columnTable';
 import LoadingPage from "./common/loading";
 
+import auth from '../services/authServices';
+
 
 class ReportForm extends Form {
     state = {
-        data: { dateInitial: "", dateEnd: "" },
+        data: { dateInitial: "", dateEnd: "", email: auth.getCurrenEmail() },
         errors: {},
         isDataOk: Boolean,
 
@@ -21,13 +23,14 @@ class ReportForm extends Form {
     schema = {
         dateInitial: Joi.date().min('1-1-2000').iso().required(),
         dateEnd: Joi.date().min('1-1-2019').iso().required(),
+        email: Joi.string()
 
     }
 
     doSubmit = async () => {
         try {
             const { data: allExpenses } = await getExpensesForFilter(this.state.data);
-            this.setState({ isLoading: true });
+
             const expenseCategorieGroup = calculateExpense(allExpenses);
 
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);

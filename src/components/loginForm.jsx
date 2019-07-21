@@ -13,8 +13,11 @@ class LoginForm extends Form {
     state = {
         data: { username: "", password: "" },
         errors: {},
-    };
 
+    };
+    componentDidMount() {
+
+    }
     schema = {
         username: Joi.string().required().label('Username'),
         password: Joi.string().required().label('Password')
@@ -25,6 +28,7 @@ class LoginForm extends Form {
             const { data } = this.state;
             await auth.login(data.username, data.password) // I should create this service 
             this.setState({ isLoading: true })
+            localStorage.setItem("email", data.username);
             window.location = "/report"
 
         } catch (ex) {
@@ -37,13 +41,14 @@ class LoginForm extends Form {
     }
 
     render() {
-        const { isLoading } = this.state;
+        const { isLoading, user, email } = this.state;
 
         if (isLoading) {
             return (
                 <LoadingPage />
             )
         };
+
 
         return (
             <div className="container">

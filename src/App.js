@@ -28,17 +28,18 @@ class App extends Component {
     componentDidMount() {
 
         const user = auth.getCurrenUser();
-        this.setState({ user });
+        const email = auth.getCurrenEmail();
+        this.setState({ user, email });
     }
 
     render() {
-        const { user } = this.state;
+        const { user, email } = this.state;
         console.log(user);
         return (
             <React.Fragment>
 
                 <ToastContainer />
-                <NavBar user={user} />
+                <NavBar user={user}  email= {email}/>
                 <main className="container">
                     <Switch>
                         <Route path="/login" component={LoginForm} />

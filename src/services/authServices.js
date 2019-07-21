@@ -1,9 +1,10 @@
 import http from './httpServices';
-//import { apiUrl } from '../config.json'
+import { apiUrl } from '../config.json'
 
-//const apiEndPoint = apiUrl + '/auth';
-const apiEndPoint = '/auth';
+const apiEndPoint = apiUrl + '/auth';
+//const apiEndPoint = '/auth';
 const tokenKey = "token";
+
 
 
 export function getCurrenUser() {
@@ -12,6 +13,13 @@ export function getCurrenUser() {
     } catch (error) {
         return null;
     }
+}
+
+export function getCurrenEmail() {
+
+    return localStorage.getItem("email");
+
+
 }
 export async function login(email, password) {
     const { data: jwt } = await http.post(apiEndPoint, { email, password });
@@ -26,7 +34,8 @@ function logout() {
 export default {
     login,
     logout,
-    getCurrenUser
+    getCurrenUser,
+    getCurrenEmail
 
 
 }

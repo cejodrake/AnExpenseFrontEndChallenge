@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = ({ user }) => {
+const NavBar = ({ user, email }) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" >An Expense Tracker</a>
@@ -31,7 +31,7 @@ const NavBar = ({ user }) => {
                                 <NavLink className="nav-item nav-link" to="/newexpense"> Add Expense  </NavLink>
                                 <NavLink className="nav-item nav-link" to="/report"> My Reports  </NavLink>
                                 <NavLink className="nav-item nav-link" to="/profile">
-                                    {console.log(user.name)}
+                                    {email}
                                 </NavLink>
 
                                 <NavLink className="nav-item nav-link" to="/logout" >
