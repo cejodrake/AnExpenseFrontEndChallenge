@@ -10,7 +10,7 @@ import LoadingPage from "./common/loading";
 
 import auth from '../services/authServices';
 
-import messages from './common/messages';
+import { messages } from '../utils/messages';
 
 class ReportForm extends Form {
     state = {
@@ -36,8 +36,9 @@ class ReportForm extends Form {
 
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);
 
-
             toast.warn(messages(maxExpense['name']));
+
+
 
             this.setState({ allExpenses })
 
