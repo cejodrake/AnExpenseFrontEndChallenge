@@ -7,7 +7,7 @@ import { getCategories } from "../services/categorieService";
 import auth from '../services/authServices';
 
 import { saveExpense } from '../services/expenseService';
-import LoadingPage from './common/loading';
+
 
 
 class NewExpenseForm extends Form {

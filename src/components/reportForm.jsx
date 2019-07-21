@@ -10,6 +10,7 @@ import LoadingPage from "./common/loading";
 
 import auth from '../services/authServices';
 
+import messages from './common/messages';
 
 class ReportForm extends Form {
     state = {
@@ -35,8 +36,11 @@ class ReportForm extends Form {
 
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);
 
-            toast.warn("“spending too much money on :" + maxExpense['name'] + ".. as always");
+
+            toast.warn(messages(maxExpense['name']));
+
             this.setState({ allExpenses })
+
 
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
