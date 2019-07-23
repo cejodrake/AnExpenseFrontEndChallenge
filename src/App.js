@@ -33,13 +33,13 @@ class App extends Component {
     }
 
     render() {
-        const { user, email } = this.state;
+        const { user, email } = this.state
         console.log(user);
         return (
             <React.Fragment>
 
                 <ToastContainer />
-                <NavBar user={user}  email= {email}/>
+                <NavBar user={user} email={email} />
                 <main className="container">
                     <Switch>
                         <Route path="/login" component={LoginForm} />

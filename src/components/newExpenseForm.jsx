@@ -18,7 +18,7 @@ class NewExpenseForm extends Form {
             categorieId: "",
             total: 0,
             comments: "",
-            email: auth.getCurrenEmail() // get email for save for each user.
+            email: auth.getCurrenEmail()
         },
         categories: [],
         errors: {},
@@ -40,7 +40,9 @@ class NewExpenseForm extends Form {
 
     async componentDidMount() {
         this.getAllCategories();
-        console.log(this.state.data.email)
+        const emailActual = auth.getCurrenEmail();
+        this.setState({ emailActual })
+
 
     }
     doSubmit = async () => {
@@ -49,6 +51,7 @@ class NewExpenseForm extends Form {
 
             const { data } = this.state;
 
+            data.email = this.state.emailActual;
 
             await saveExpense(data);
 

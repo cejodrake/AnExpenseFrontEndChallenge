@@ -21,6 +21,7 @@ class ReportForm extends Form {
         allExpenses: []
     }
 
+
     schema = {
         dateInitial: Joi.date().min('1-1-2000').iso().required(),
         dateEnd: Joi.date().min('1-1-2019').iso().required(),
@@ -30,15 +31,16 @@ class ReportForm extends Form {
 
     doSubmit = async () => {
         try {
+
             const { data: allExpenses } = await getExpensesForFilter(this.state.data);
 
             const expenseCategorieGroup = calculateExpense(allExpenses);
 
             const maxExpense = maxExpenseforCategorie(expenseCategorieGroup);
-
-            toast.warn(messages(maxExpense['name']));
-
-
+            console.log(allExpenses.length)
+            if (allExpenses.length >= 5) {
+                toast.warn(messages(maxExpense['name']));
+            }
 
             this.setState({ allExpenses })
 
@@ -62,6 +64,7 @@ class ReportForm extends Form {
                 <LoadingPage />
             );
         }
+
         return (
             <div className="container">
                 <h1> Report</h1>

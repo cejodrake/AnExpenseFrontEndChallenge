@@ -7,13 +7,16 @@ import auth from '../services/authServices';
 import { toast } from 'react-toastify';
 
 import LoadingPage from './common/loading';
+import { Redirect } from 'react-router-dom';
+
+
 
 class LoginForm extends Form {
 
     state = {
         data: { username: "", password: "" },
         errors: {},
-
+        isLoading: false
     };
 
     schema = {
@@ -27,7 +30,8 @@ class LoginForm extends Form {
             await auth.login(data.username, data.password) // I should create this service 
             this.setState({ isLoading: true })
             localStorage.setItem("email", data.username);
-            window.location = "/report"
+            // const state = this.props.location;
+            window.location = "/report"// state ? state.form.pathnam : '/'
 
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
@@ -39,13 +43,16 @@ class LoginForm extends Form {
     }
 
     render() {
-        const { isLoading, user, email } = this.state;
 
+        if (auth.getCurrenUser()) return <Redirect to="/report" />
+
+        const { isLoading } = this.state;
         if (isLoading) {
             return (
                 <LoadingPage />
             )
         };
+
 
 
         return (

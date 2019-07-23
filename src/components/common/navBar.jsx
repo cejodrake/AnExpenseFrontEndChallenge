@@ -31,7 +31,7 @@ const NavBar = ({ user, email }) => {
                                 <NavLink className="nav-item nav-link" to="/newexpense"> Add Expense  </NavLink>
                                 <NavLink className="nav-item nav-link" to="/report"> My Reports  </NavLink>
                                 <NavLink className="nav-item nav-link" to="/profile">
-                                    {email}
+                                    Welcome {email}
                                 </NavLink>
 
                                 <NavLink className="nav-item nav-link" to="/logout" >
