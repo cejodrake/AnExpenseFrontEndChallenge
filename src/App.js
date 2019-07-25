@@ -34,7 +34,7 @@ class App extends Component {
 
     render() {
         const { user, email } = this.state
-        console.log(user);
+
         return (
             <React.Fragment>
 

@@ -30,8 +30,8 @@ class LoginForm extends Form {
             await auth.login(data.username, data.password) // I should create this service 
             this.setState({ isLoading: true })
             localStorage.setItem("email", data.username);
-            // const state = this.props.location;
-            window.location = "/report"// state ? state.form.pathnam : '/'
+
+            window.location = '/report'
 
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
@@ -44,7 +44,7 @@ class LoginForm extends Form {
 
     render() {
 
-        if (auth.getCurrenUser()) return <Redirect to="/report" />
+
 
         const { isLoading } = this.state;
         if (isLoading) {

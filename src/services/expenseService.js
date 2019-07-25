@@ -1,7 +1,7 @@
 import http from './httpServices';
 
-const apiEndPoint = 'http://localhost:3000/api/expenses';
-//const apiEndPoint = '/expenses';
+//const apiEndPoint = 'http://localhost:3000/api/expenses';
+const apiEndPoint = '/expenses';
 
 function expenseUrl(id) {
     return `${apiEndPoint}/${id}`;
