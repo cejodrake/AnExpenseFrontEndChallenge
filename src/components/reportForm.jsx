@@ -2,14 +2,14 @@ import React from "react";
 import Form from './common/form';
 import Joi from 'joi-browser';
 import { toast } from 'react-toastify';
+
 import { calculateExpense, maxExpenseforCategorie } from '../utils/calculateExpenseCategorie';
 import { getExpensesForFilter } from './../services/reportService';
+
 import Table from './common/table';
 import HeadColumnsTable from './common/columnTable';
 import LoadingPage from "./common/loading";
-
 import auth from '../services/authServices';
-
 import { messages } from '../utils/messages';
 
 class ReportForm extends Form {
@@ -17,10 +17,8 @@ class ReportForm extends Form {
         data: { dateInitial: "", dateEnd: "", email: auth.getCurrenEmail() },
         errors: {},
         isDataOk: Boolean,
-
         allExpenses: []
     }
-
 
     schema = {
         dateInitial: Joi.date().min('1-1-2000').iso().required(),
@@ -54,17 +52,13 @@ class ReportForm extends Form {
         }
     }
 
-
     render() {
-
         const { allExpenses, isLoading } = this.state
-
         if (isLoading) {
             return (
                 <LoadingPage />
             );
         }
-
         return (
             <div className="container">
                 <h1> Report</h1>

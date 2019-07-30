@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 
-
 class HeadColumnsTable extends Component {
     render() {
         return (
@@ -15,5 +14,4 @@ class HeadColumnsTable extends Component {
     }
 
 }
-
 export default HeadColumnsTable

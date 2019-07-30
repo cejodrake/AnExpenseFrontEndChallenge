@@ -3,12 +3,8 @@ import Form from './common/form';
 import Joi from 'joi-browser';
 import { toast } from 'react-toastify';
 import { getCategories } from "../services/categorieService";
-
 import auth from '../services/authServices';
-
 import { saveExpense } from '../services/expenseService';
-
-
 
 class NewExpenseForm extends Form {
 
@@ -22,9 +18,6 @@ class NewExpenseForm extends Form {
         },
         categories: [],
         errors: {},
-
-
-
     }
 
     schema = {
@@ -42,13 +35,11 @@ class NewExpenseForm extends Form {
         this.getAllCategories();
         const emailActual = auth.getCurrenEmail();
         this.setState({ emailActual })
-
-
     }
+
     doSubmit = async () => {
 
         try {
-
             const { data } = this.state;
 
             data.email = this.state.emailActual;
@@ -58,7 +49,6 @@ class NewExpenseForm extends Form {
             this.clearInput();
 
             toast.success("Your information was saved successfully");
-
 
         } catch (error) {
             if (error.response && error.response.status === 400) {
