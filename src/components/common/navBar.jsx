@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = ({ user, email }) => {
+const NavBar = ({ user }) => {
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" >An Expense Tracker</a>
@@ -28,7 +29,7 @@ const NavBar = ({ user, email }) => {
                             <NavLink className="nav-item nav-link" to="/newexpense"> Add Expense  </NavLink>
                             <NavLink className="nav-item nav-link" to="/report"> My Reports  </NavLink>
                             <NavLink className="nav-item nav-link" to="/profile">
-                                Welcome {email}
+                                Welcome {user.name}
                             </NavLink>
 
                             <NavLink className="nav-item nav-link" to="/logout" >

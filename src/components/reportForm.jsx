@@ -14,7 +14,8 @@ import { messages } from '../utils/messages';
 
 class ReportForm extends Form {
     state = {
-        data: { dateInitial: "", dateEnd: "", email: auth.getCurrenEmail() },
+        data: { dateInitial: "", dateEnd: "" },
+        email: "",
         errors: {},
         isDataOk: Boolean,
         allExpenses: []
@@ -23,13 +24,19 @@ class ReportForm extends Form {
     schema = {
         dateInitial: Joi.date().min('1-1-2000').iso().required(),
         dateEnd: Joi.date().min('1-1-2019').iso().required(),
-        email: Joi.string()
+        //email: Joi.string()
 
+    }
+
+    componentDidMount() {
+        const user = auth.getCurrentUser();
+        this.setState({ user });
     }
 
     doSubmit = async () => {
         try {
-
+            console.log(this.user.email)
+            this.data.email = this.user.email
             const { data: allExpenses } = await getExpensesForFilter(this.state.data);
 
             const expenseCategorieGroup = calculateExpense(allExpenses);

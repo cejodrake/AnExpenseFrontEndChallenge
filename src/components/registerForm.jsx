@@ -2,12 +2,11 @@ import React from 'react';
 import Form from './common/form';
 
 import Joi from 'joi-browser';
-import auth from '../services/authServices';
+
 import { register } from './../services/userService';
 import { toast } from 'react-toastify';
-
-
 import LoadingPage from './common/loading';
+
 class RegisterForm extends Form {
 
     state = {
@@ -25,6 +24,7 @@ class RegisterForm extends Form {
     doSubmit = async () => {
         try {
             await register(this.state.data);
+            console.log(this.state.data)
             this.setState({ isLoading: true })
             toast.success("Your information was saved successfully!");
             window.location = "/login"

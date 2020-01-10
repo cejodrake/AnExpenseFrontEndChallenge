@@ -14,11 +14,13 @@ class NewExpenseForm extends Form {
             categorieId: "",
             total: 0,
             comments: "",
-            email: auth.getCurrenEmail()
+
         },
+        email: "",
         categories: [],
         errors: {},
     }
+
 
     schema = {
         _id: Joi.string(),
@@ -26,15 +28,17 @@ class NewExpenseForm extends Form {
         categorieId: Joi.string().required().label('Categories'),
         total: Joi.number().required().min(0).label('Total'),
         comments: Joi.string(),
-        email: Joi.string()
-
 
     }
 
     async componentDidMount() {
         this.getAllCategories();
-        const emailActual = auth.getCurrenEmail();
-        this.setState({ emailActual })
+        const user = auth.getCurrentUser();
+
+        this.setState({ user });
+
+
+
     }
 
     doSubmit = async () => {
@@ -42,7 +46,7 @@ class NewExpenseForm extends Form {
         try {
             const { data } = this.state;
 
-            data.email = this.state.emailActual;
+            data.email = this.state.user.email;
 
             await saveExpense(data);
 
@@ -76,6 +80,7 @@ class NewExpenseForm extends Form {
             },
         })
     }
+
     render() {
         return (
             <div className="container">

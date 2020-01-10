@@ -22,8 +22,7 @@ class LoginForm extends Form {
         try {
             const { data } = this.state;
             await auth.login(data.username, data.password) // I should create this service 
-            this.setState({ isLoading: true })
-            localStorage.setItem("email", data.username);
+            this.setState({ isLoading: true });
             window.location = '/report'
 
         } catch (ex) {
